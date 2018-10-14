@@ -22,14 +22,14 @@ class Signup extends Component{
         e.preventDefault()
         const {signup} = this.state
         if(signup.password !== signup.password2) {
-            return toastr.error('Escribe bien hijo!')
+            return toastr.error('Constraseñas no coiciden')
         }
         axios.post('http://localhost:3000/signup', signup)
         .then(user=>{
             console.log(user)
-            toastr.success("hey! lo lograte!")
+            toastr.success("Bienvenido")
         })
-        .catch(e=>toastr.error("No pitufa"))
+        .catch(e=>toastr.error("Intenta de nuevo"))
     }
 
     render(){

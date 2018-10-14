@@ -19,7 +19,7 @@ class Login extends Component{
         axios.post(url, auth)
         .then(res=>{
             console.log(res)
-            toastr.success("Te logueate!")
+            toastr.success("Bienevenido")
             localStorage.setItem('user', JSON.stringify(res.data.user))
             localStorage.setItem('token', res.data.token)
             this.setState({loading:false})
@@ -28,7 +28,7 @@ class Login extends Component{
 
         })
         .catch(e=>{
-            toastr.error("no quiero tu cochinada")
+            toastr.error("Usuario o contraseña incorrectas")
             this.setState({loading:false})
             
         })
