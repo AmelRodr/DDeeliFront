@@ -1,3 +1,13 @@
+.logo {
+  width: 120px;
+  height: 31px;
+  background: rgba(83, 156, 23, 0.2);
+  margin: 16px 24px 16px 0;
+  float: left;
+  
+}
+
+
 .App {
   text-align: center;
 }
