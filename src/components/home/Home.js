@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu, Breadcrumb,Carousel } from 'antd';
 import logo from '../../logo.jpg'
+import uno from '../../ddeeliGallery/1.jpg'
+import dos from '../../ddeeliGallery/2.jpg'
+import tres from '../../ddeeliGallery/3.jpg'
+import cuatro from '../../ddeeliGallery/4.jpg'
+import cinco from '../../ddeeliGallery/5.jpg'
 
    import { Collapse,
     Navbar,
@@ -60,8 +65,15 @@ class Home extends Component {
                     </Collapse>
                 </Navbar>         
 
-               <Layout theme="dark" className="layout">
+               <Layout  className="layout">
                     <Content style={{ padding: '0 10px' }}>
+                    <Carousel className='carrousel' autoplay>
+                        <div><h3><img alt='' src={tres} /></h3></div>
+                        <div><h3><img alt='' src={dos} /></h3></div>
+                        <div><h3><img alt='' src={cuatro} /></h3></div>
+                        <div><h3><img alt='' src={cinco} /></h3></div>
+                        <div><h3><img alt='' src={uno} /></h3></div>
+                    </Carousel>,
                        
                         <div style={{ background: '#fff', padding: 24, minHeight: 500 }}>Content</div>
                     </Content>
