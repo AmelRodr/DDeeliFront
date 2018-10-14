@@ -46,7 +46,7 @@ class Login extends Component{
         const {auth, loading} = this.state
         return(
             <form onSubmit={this.login} style={{width:600, margin:"0 auto", padding:20}}>
-                <h2>Inicia sesión mijo</h2>
+                <h2>Inicia sesión</h2>
                 <p>
                 <Input 
                     name="email"

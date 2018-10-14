@@ -13,12 +13,35 @@ import cinco from '../../ddeeliGallery/5.jpg'
     NavbarBrand,
     Nav,
     NavItem,
+    UncontrolledCarousel,
     NavLink,
     UncontrolledDropdown,
     DropdownToggle,
     DropdownMenu,
     DropdownItem,
     Button } from 'reactstrap';
+
+
+const items = [
+    {
+      src:cuatro,
+      altText: '',
+      caption:<div style={{paddingBottom:'45%'}}> <Button href='/signup' color="info" >Localiza tu chef</Button> </div>,
+      header: <div style={{paddingBottom:'15%'}}> <h1>Pide tu comida a chefs independientes</h1> </div>
+    },
+    {
+      src:dos,
+      altText: 'Slide 2',
+      caption:<div style={{paddingBottom:'45%'}}> <Button href='/signup' color="info" >Localiza tu chef</Button> </div>,
+      header: <div style={{paddingBottom:'15%'}}> <h1>La comida mas sabrosa</h1> </div>
+    },
+    {
+      src: tres,
+      altText: 'Slide 3',
+      caption:<div style={{paddingBottom:'45%'}}> <Button href='/signup' color="info" >Localiza los chefs cerca de ti</Button> </div>,
+      header: <div style={{paddingBottom:'15%'}}> <h1>Descubre a tu chef favorito</h1> </div>
+    }
+  ];
 
 const { Header, Content, Footer } = Layout;
 
@@ -67,15 +90,25 @@ class Home extends Component {
 
                <Layout  className="layout">
                     <Content style={{ padding: '0 10px' }}>
-                    <Carousel className='carrousel' autoplay>
-                        <div><h3><img alt='' src={tres} /></h3></div>
-                        <div><h3><img alt='' src={dos} /></h3></div>
-                        <div><h3><img alt='' src={cuatro} /></h3></div>
-                        <div><h3><img alt='' src={cinco} /></h3></div>
-                        <div><h3><img alt='' src={uno} /></h3></div>
-                    </Carousel>,
+                    {/* <Carousel className='carrousel' autoplay dots='false' >                    
+                        <div>
+                            <h3>
+                           
+                                <img alt='' src={tres} style={{width:'100vw'}}/>
+                                <Button href='/signup' color="info" >Signup</Button>{' '}
+                                <Button  type="primary">Primary</Button>
+                            </h3>
+                        </div>
+                        <div><h3><img alt='' src={dos}  style={{width:'100vw'}} /></h3></div>
+                        <div><h3><img alt='' src={cuatro}   style={{width:'100vw'}} /></h3></div>
+                        <div><h3><img alt='' src={cinco}  style={{width:'100vw'}}/></h3></div>
+                     
                        
-                        <div style={{ background: '#fff', padding: 24, minHeight: 500 }}>Content</div>
+                       
+                    </Carousel> */}
+                    <div style={{height:'50vh'}} >
+                    <UncontrolledCarousel items={items} />
+                    </div>
                     </Content>
                     <Footer   style={{ textAlign: 'center' }}>
                         DDEELI ©2018 Created by Amel  

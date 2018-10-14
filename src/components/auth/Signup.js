@@ -36,7 +36,7 @@ class Signup extends Component{
         const {signup, loading} = this.state
         return(
             <form onSubmit={this.createUser} style={{width:600, margin:"0 auto", padding:20}}>
-                <h2>Date de alta mijo</h2>
+                <h2>Regístrate</h2>
                 <p>
                     <Input 
                         name="username"

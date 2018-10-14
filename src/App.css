@@ -1,16 +1,11 @@
+/* For demo */
 .ant-carousel .slick-slide {
   text-align: center;
-  height: 160px;
-  line-height: 160px;
-  background: #364d79;
-  overflow: hidden;
-}
-.carrousel div{
-  display: flex;
-  justify-content: center;
-  width: 150vw;
 }
 
+.ant-carousel .slick-slide h3 {
+  color: #fff;
+}
 
 .App {
   text-align: center;
