@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Layout, Menu, Breadcrumb,Carousel } from 'antd';
-import logo from '../../logo.jpg'
+import logo from '../../logo.png'
 import uno from '../../ddeeliGallery/1.jpg'
 import dos from '../../ddeeliGallery/2.jpg'
 import tres from '../../ddeeliGallery/3.jpg'
@@ -20,6 +20,7 @@ import cinco from '../../ddeeliGallery/5.jpg'
     DropdownMenu,
     DropdownItem,
     Button } from 'reactstrap';
+import Cards from '../cards/Cards';
 
 
 const items = [
@@ -90,25 +91,12 @@ class Home extends Component {
 
                <Layout  className="layout">
                     <Content style={{ padding: '0 10px' }}>
-                    {/* <Carousel className='carrousel' autoplay dots='false' >                    
-                        <div>
-                            <h3>
-                           
-                                <img alt='' src={tres} style={{width:'100vw'}}/>
-                                <Button href='/signup' color="info" >Signup</Button>{' '}
-                                <Button  type="primary">Primary</Button>
-                            </h3>
-                        </div>
-                        <div><h3><img alt='' src={dos}  style={{width:'100vw'}} /></h3></div>
-                        <div><h3><img alt='' src={cuatro}   style={{width:'100vw'}} /></h3></div>
-                        <div><h3><img alt='' src={cinco}  style={{width:'100vw'}}/></h3></div>
-                     
-                       
-                       
-                    </Carousel> */}
-                    <div style={{height:'50vh'}} >
+        
+                    
                     <UncontrolledCarousel items={items} />
-                    </div>
+                       
+                    <Cards/>
+
                     </Content>
                     <Footer   style={{ textAlign: 'center' }}>
                         DDEELI ©2018 Created by Amel  
