@@ -6,6 +6,8 @@ import dos from '../../ddeeliGallery/2.jpg'
 import tres from '../../ddeeliGallery/3.jpg'
 import cuatro from '../../ddeeliGallery/4.jpg'
 import cinco from '../../ddeeliGallery/5.jpg'
+import Cards from '../cards/Cards';
+import Login from '../auth/Login';
 
    import { Collapse,
     Navbar,
@@ -20,7 +22,7 @@ import cinco from '../../ddeeliGallery/5.jpg'
     DropdownMenu,
     DropdownItem,
     Button } from 'reactstrap';
-import Cards from '../cards/Cards';
+
 
 
 const items = [
@@ -78,7 +80,8 @@ class Home extends Component {
                         </NavItem>
                         <NavItem>
                             <div style={{ marginRight: '5px' }}>
-                                <Button href='/login' outline color="info">Login</Button>{''}
+                                 <Login/>   
+                                {/*  */}
                             </div>
                         </NavItem>
                         <NavItem>

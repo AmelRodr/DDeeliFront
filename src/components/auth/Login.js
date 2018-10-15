@@ -1,8 +1,10 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom';
-import {Input, Button, Modal,Form, Icon, Checkbox} from 'antd'
+import {Input, Modal,Form, Icon, Checkbox} from 'antd'
 import axios from 'axios'
 import toastr from 'toastr'
+import {Button} from 'reactstrap';
+
 
 const url = 'http://localhost:3000/login'
 const FormItem = Form.Item;
@@ -77,13 +79,11 @@ class NormalLoginForm  extends Component{
         const { getFieldDecorator } = this.props.form;
         return(
             <div>
-            
-              <Button type="primary" onClick={this.showModal}>
-              Open Modal
-            </Button>
+
+            <Button type="primary" onClick={this.showModal} outline color="info">Login</Button>{''}
 
             <Modal
-              title="Login"
+              title="Iniciar sesión"
               visible={this.state.visible}
               onOk={this.handleOk}
               onCancel={this.handleCancel}
@@ -113,40 +113,12 @@ class NormalLoginForm  extends Component{
                                 <Checkbox>Remember me</Checkbox>
                             )}
                             <a className="login-form-forgot" href="">Forgot password</a>
-                            <Button loading={loading} type="primary" htmlType="submit" className="login-form-button">
+                            <Button loading={loading} type="primary" htmlType="submit" color="info" className="login-form-button">
                                 Log in
                             </Button>
                             Or <a href="">register now!</a>
                         </FormItem>
-                    </Form>
-
-
-                    <form onSubmit={this.login} style={{ width: 600, margin: "0 auto", padding: 20 }}>
-                        <h2>Inicia sesión mijo</h2>
-                        <p>
-                            <Input
-                                name="email"
-                                type="email"
-                                onChange={this.onChange}
-                                value={auth.email}
-                                placeholder="Tu correo"
-                            />
-                        </p>
-                        <p>
-                            <Input
-                                name="password"
-                                type="password"
-                                onChange={this.onChange}
-                                value={auth.password}
-                                placeholder="Tu Password"
-                            />
-                        </p>
-                        <Button loading={loading} type="primary" htmlType="submit" >Inicia sesión</Button>
-                    </form>
-
-
-          
-            
+                    </Form>                
             </Modal>
             </div>
         )
