@@ -1,4 +1,15 @@
 /* For demo */
+.login-form {
+  max-width: 300px;
+}
+.login-form-forgot {
+  float: right;
+}
+.login-form-button {
+  width: 100%;
+}
+
+
 .ant-carousel .slick-slide {
   text-align: center;
 }
