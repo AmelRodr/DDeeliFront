@@ -1,6 +1,7 @@
 import React from 'react'
 import { Drawer, List, Avatar, Divider, Col, Row } from 'antd';
 import logo from '../../logo.svg'
+import logod from '../../logo.png'
 
 const pStyle = {
     fontSize: 16,
@@ -11,6 +12,7 @@ const pStyle = {
   };
 
 const DescriptionItem = ({ title, content,user }) => (
+
     <div
       style={{
         fontSize: 14,
@@ -41,7 +43,15 @@ const DescriptionItem = ({ title, content,user }) => (
   class ProfileDisplay extends React.Component {
     state = {
          visible: false ,
-         user:'amel'
+         user:'username',
+         ciudad:'CDMX',
+         pais: 'Mexico',
+         lema: 'DDeeli is the best app',
+         telefono: 5591992055,
+         photoURL: logod,
+         nombre: 'Jose',
+         apellido: 'Hernandez',
+         
         };
   
     showDrawer = () => {
@@ -60,13 +70,12 @@ const DescriptionItem = ({ title, content,user }) => (
     render() {
     const {user} = this.props
     console.log(user.username)
-
+    const {ciudad,pais,lema,telefono,nombre,photoURL,apellido}=this.state
          
     return(
         <div>
         <p style={{ ...pStyle, marginBottom: 24 }}>User Profile</p>
           <p style={pStyle}>Personal</p>
-          <Avatar src={user.photoURL}   />
           <img style={{ borderRadius: '50%' }} src={user.photoURL || logo} width="200" alt="user" />
                 {/* <h1>{user.username}</h1>
                 <p>{user.email}</p>
@@ -77,84 +86,52 @@ const DescriptionItem = ({ title, content,user }) => (
 
           <Row>
             <Col span={12}>
-              <DescriptionItem title="Full Name" content={user.username} />{' '}
+              <DescriptionItem title="Username" content={user.username} />{' '}
             </Col>
             <Col span={12}>
-              <DescriptionItem title="Account" content="AntDesign@example.com" />
+              <DescriptionItem title="Nombre" content={nombre} />
+            </Col>
+            <Col span={12}>
+              <DescriptionItem title="Pais" content={pais} />
+            </Col>
+          {/* </Row>
+          <Row> */}
+            <Col span={12}>
+              <DescriptionItem title="Apellido" content={apellido} />
+            </Col>
+           
+            <Col span={12}>
+              <DescriptionItem title="Ciudad" content={ciudad} />
             </Col>
           </Row>
-          <Row>
-            <Col span={12}>
-              <DescriptionItem title="City" content="HangZhou" />
-            </Col>
-            <Col span={12}>
-              <DescriptionItem title="Country" content="China🇨🇳" />
-            </Col>
-          </Row>
-          <Row>
+          {/* <Row>
             <Col span={12}>
               <DescriptionItem title="Birthday" content="February 2,1900" />
-            </Col>
+            </Col> 
             <Col span={12}>
               <DescriptionItem title="Website" content="-" />
             </Col>
-          </Row>
+          </Row> */}
           <Row>
             <Col span={24}>
               <DescriptionItem
-                title="Message"
-                content="Make things as simple as possible but no simpler."
+                title="Lema"
+                content="La cocina es mi vida"
               />
             </Col>
           </Row>
+        
           <Divider />
-          <p style={pStyle}>Company</p>
+          <p style={pStyle}>Contacto</p>
           <Row>
             <Col span={12}>
-              <DescriptionItem title="Position" content="Programmer" />
+              <DescriptionItem title="Email" content={user.email} />
             </Col>
             <Col span={12}>
-              <DescriptionItem title="Responsibilities" content="Coding" />
+              <DescriptionItem title="Telefono" content={telefono} />
             </Col>
           </Row>
-          <Row>
-            <Col span={12}>
-              <DescriptionItem title="Department" content="AFX" />
-            </Col>
-            <Col span={12}>
-              <DescriptionItem title="Supervisor" content={<a>Lin</a>} />
-            </Col>
-          </Row>
-          <Row>
-            <Col span={24}>
-              <DescriptionItem
-                title="Skills"
-                content="C / C + +, data structures, software engineering, operating systems, computer networks, databases, compiler theory, computer architecture, Microcomputer Principle and Interface Technology, Computer English, Java, ASP, etc."
-              />
-            </Col>
-          </Row>
-          <Divider />
-          <p style={pStyle}>Contacts</p>
-          <Row>
-            <Col span={12}>
-              <DescriptionItem title="Email" content="AntDesign@example.com" />
-            </Col>
-            <Col span={12}>
-              <DescriptionItem title="Phone Number" content="+86 181 0000 0000" />
-            </Col>
-          </Row>
-          <Row>
-            <Col span={24}>
-              <DescriptionItem
-                title="Github"
-                content={(
-                  <a href="http://github.com/ant-design/ant-design/">
-                    github.com/ant-design/ant-design/
-                  </a>
-                )}
-              />
-            </Col>
-          </Row>
+         
           </div>
     )
  }
