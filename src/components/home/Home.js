@@ -80,8 +80,7 @@ class Home extends Component {
                         </NavItem>
                         <NavItem>
                             <div style={{ marginRight: '5px' }}>
-                                 <Login/>   
-                                {/*  */}
+                                 <Login/>  
                             </div>
                         </NavItem>
                         <NavItem>

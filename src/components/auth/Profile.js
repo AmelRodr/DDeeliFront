@@ -4,13 +4,18 @@ import axios from 'axios'
 import toastr from 'toastr'
 import {uploadPic, getUserPics} from '../../services/userService'
 import Gallery from './Gallery';
+import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+
+const { Header, Content, Footer, Sider } = Layout;
+const { SubMenu } = Menu;
 
 
 class Profile extends Component{
 
     state = {
         user:{},
-        pics:[]
+        pics:[],
+        current:'1'
     }
 
     componentWillMount(){
@@ -53,20 +58,64 @@ class Profile extends Component{
         .catch(e=>toastr.error('Error'))
     }
 
+    menuItem = (e) =>{
+       this.setState({current:e.key})
+        }
+
     render(){
-        const {user, pics} = this.state
+        const {current,user, pics} = this.state
+        console.log(current)
+        let contenedor;
+        if(current==2){
+            contenedor =  <Content style={{ padding: '0 24px', minHeight: 280 }}>Webos</Content>
+        }else if(current==1){
+            console.log('puto')
+            contenedor =  <Content style={{ padding: '0 24px', minHeight: 280 }}>Puto</Content>
+        }else{
+            contenedor =  <Content style={{ padding: '0 24px', minHeight: 280 }}>x</Content>
+        }
         return(
-            <div>
-                <img style={{borderRadius:'50%'}} src={user.photoURL || logo} width="200" alt="user"/>
+            <Layout>
+
+                <Content style={{ padding: '0 50px' }}>
+                    <Breadcrumb style={{ margin: '16px 0' }}>
+                        <Breadcrumb.Item>Home</Breadcrumb.Item>
+                        <Breadcrumb.Item>List</Breadcrumb.Item>
+                        <Breadcrumb.Item>App</Breadcrumb.Item>
+                    </Breadcrumb>
+                    <Layout style={{ padding: '24px 0', background: '#fff' }}>
+                        <Sider width={200} style={{ background: '#fff' }}>
+                            <Menu
+                                mode="inline"
+                                defaultSelectedKeys={['1']}
+                                defaultOpenKeys={['sub1']}
+                                style={{ height: '100%' }}
+                                onClick={this.menuItem}
+                            >
+                                <SubMenu key="sub1" title={<span><Icon type="user" />{user.username}</span>}>
+                                    <Menu.Item key="1">Perfil</Menu.Item>
+                                    <Menu.Item key="2">Mensajes</Menu.Item>
+                                    <Menu.Item key="3">Recibos</Menu.Item>
+                                    <Menu.Item key="4">Productos</Menu.Item>
+                                </SubMenu>        
+                            </Menu>
+                        </Sider>
+                        
+                      {contenedor}
+                    </Layout>
+                </Content>
+
+
+                <img style={{ borderRadius: '50%' }} src={user.photoURL || logo} width="200" alt="user" />
                 <h1>{user.username}</h1>
                 <p>{user.email}</p>
                 <button onClick={this.getPrivateInfo} >Bajate mi pack privado ;)</button>
                 <input accept="image/*" onChange={this.onChangeFile} ref="input" hidden type="file" />
-                <br/>
-                <img style={{cursor:"pointer"}} width="100" onClick={this.uploadPhoto} src="https://cdn.onlinewebfonts.com/svg/img_212908.png" />
-            
+                <br />
+                <img style={{ cursor: "pointer" }} width="100" onClick={this.uploadPhoto} src="https://cdn.onlinewebfonts.com/svg/img_212908.png" />
+
                 <Gallery pics={pics} />
-            </div>
+            </Layout> 
         )
     }
 }
