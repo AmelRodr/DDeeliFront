@@ -5,6 +5,7 @@ import toastr from 'toastr'
 import {uploadPic, getUserPics} from '../../services/userService'
 import Gallery from './Gallery';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import ProfileDisplay from './ProfileDisplay';
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -66,13 +67,17 @@ class Profile extends Component{
         const {current,user, pics} = this.state
         console.log(current)
         let contenedor;
-        if(current==2){
-            contenedor =  <Content style={{ padding: '0 24px', minHeight: 280 }}>Webos</Content>
-        }else if(current==1){
+        if(current==1){
+            contenedor =  <Content style={{ padding: '0 24px', minHeight: 280 }}> <ProfileDisplay user={user}  /> </Content>
+        }else if(current==2){
             console.log('puto')
-            contenedor =  <Content style={{ padding: '0 24px', minHeight: 280 }}>Puto</Content>
-        }else{
-            contenedor =  <Content style={{ padding: '0 24px', minHeight: 280 }}>x</Content>
+            contenedor =  <Content style={{ padding: '0 24px', minHeight: 280 }}>Sin mensajes</Content>
+        }else if(current==3){
+            console.log('puto')
+            contenedor =  <Content style={{ padding: '0 24px', minHeight: 280 }}>Sin compras</Content>
+        }else if(current==4){
+            console.log('puto')
+            contenedor =  <Content style={{ padding: '0 24px', minHeight: 280 }}>No eres chef</Content>
         }
         return(
             <Layout>
@@ -104,17 +109,7 @@ class Profile extends Component{
                       {contenedor}
                     </Layout>
                 </Content>
-
-
-                <img style={{ borderRadius: '50%' }} src={user.photoURL || logo} width="200" alt="user" />
-                <h1>{user.username}</h1>
-                <p>{user.email}</p>
-                <button onClick={this.getPrivateInfo} >Bajate mi pack privado ;)</button>
-                <input accept="image/*" onChange={this.onChangeFile} ref="input" hidden type="file" />
-                <br />
-                <img style={{ cursor: "pointer" }} width="100" onClick={this.uploadPhoto} src="https://cdn.onlinewebfonts.com/svg/img_212908.png" />
-
-                <Gallery pics={pics} />
+                {/* <Gallery pics={pics} /> */}
             </Layout> 
         )
     }
