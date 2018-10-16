@@ -7,6 +7,7 @@ import {BrowserRouter} from 'react-router-dom'
 import 'antd/dist/antd.css'
 import 'toastr/build/toastr.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'semantic-ui-css/semantic.min.css';
 
 const WithRouter = () => <BrowserRouter><App/></BrowserRouter>
 

@@ -42,7 +42,7 @@ class Nab extends Component {
                             </NavItem>
                             <NavItem>
                                 <div style={{ marginRight: '5px' }}>
-                                    <Login />
+                                    <Login {...this.props} />
                                 </div>
                             </NavItem>
                             <NavItem>

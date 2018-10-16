@@ -56,7 +56,7 @@ class Home extends Component {
 
       <div>
 
-        <Nab />
+        <Nab {...this.props}/>
         <Layout className="layout">
           <Content style={{ padding: '0 10px' }}>
 
