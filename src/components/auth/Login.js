@@ -7,6 +7,7 @@ import {Button} from 'reactstrap';
 
 
 const url = 'http://localhost:3000/login'
+//const url = 'https://integration1.herokuapp.com/login'
 const FormItem = Form.Item;
 
 class NormalLoginForm  extends Component{
@@ -33,6 +34,7 @@ class NormalLoginForm  extends Component{
 
         })
         .catch(e=>{
+            console.log(e)
             toastr.error("Usuario o contraseña incorrectas")
             this.setState({loading:false})
             
@@ -77,6 +79,7 @@ class NormalLoginForm  extends Component{
     render(){
         const {auth, loading} = this.state
         const { getFieldDecorator } = this.props.form;
+        console.log(this.props)
         return(
             <div>
 

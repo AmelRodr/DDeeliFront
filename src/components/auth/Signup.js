@@ -3,6 +3,9 @@ import { Input, Button } from 'antd'
 import toastr from 'toastr'
 import axios from 'axios'
 
+const url = 'http://localhost:3000/signup'
+//const url = 'https://integration1.herokuapp.com/signup'
+
 class Signup extends Component{
 
     state = {
@@ -24,7 +27,7 @@ class Signup extends Component{
         if(signup.password !== signup.password2) {
             return toastr.error('Constraseñas no coiciden')
         }
-        axios.post('http://localhost:3000/signup', signup)
+        axios.post(url, signup)
         .then(user=>{
             console.log(user)
             toastr.success("Bienvenido")
