@@ -9,7 +9,7 @@ const Gallery = ({pics=[]}) => {
     if(pics.length < 1) return <h1>No hay fotos</h1>
     return(
         <div style={{display:"flex", flexWrap:"wrap"}}>
-            {pics.map((pic,i)=><ImageCard key={i} {...pic} />)}
+            {/*pics.map((pic,i)=><ImageCard key={i} {...pic} />)*/}
         </div>
     )
 }

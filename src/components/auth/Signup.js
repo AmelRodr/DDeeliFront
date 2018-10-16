@@ -4,6 +4,7 @@ import toastr from 'toastr'
 import axios from 'axios'
 import Nab from '../home/Nab';
 import Foter from '../home/Foter';
+
 const { Content } = Layout;
 
 const url = 'http://localhost:3000/signup'

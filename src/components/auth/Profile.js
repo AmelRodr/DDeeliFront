@@ -71,13 +71,13 @@ class Profile extends Component{
         if(current==1){
             contenedor =  <Content style={{ padding: '0 24px', minHeight: 280 }}> <ProfileDisplay user={user}  /> </Content>
         }else if(current==2){
-            console.log('puto')
+           
             contenedor =  <Content style={{ padding: '0 24px', minHeight: 280 }}>Sin mensajes</Content>
         }else if(current==3){
-            console.log('puto')
+           
             contenedor =  <Content style={{ padding: '0 24px', minHeight: 280 }}>Sin compras</Content>
         }else if(current==4){
-            console.log('puto')
+           
             contenedor =  <Content style={{ padding: '0 24px', minHeight: 280 }}> <Comida/> </Content>
         }
         return(
@@ -107,7 +107,7 @@ class Profile extends Component{
                 </Content>
 
 
-                * <img style={{ borderRadius: '50%' }} src={user.photoURL || logo} width="200" alt="user" />
+                {/* * <img style={{ borderRadius: '50%' }} src={user.photoURL || logo} width="200" alt="user" />
                 <h1>{user.username}</h1>
                 <p>{user.email}</p>*
                 <button onClick={this.getPrivateInfo} >Bajate mi pack privado ;)</button>
@@ -115,7 +115,7 @@ class Profile extends Component{
                 <br />   
                 <img style={{ cursor: "pointer" }} width="100" onClick={this.uploadPhoto} src="https://cdn.onlinewebfonts.com/svg/img_212908.png" />
      
-                <Gallery pics={pics} /> 
+                <Gallery pics={pics} />  */}
             </Layout> 
         )
     }

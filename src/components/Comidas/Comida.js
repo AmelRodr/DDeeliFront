@@ -6,13 +6,13 @@ import axios from 'axios'
 
 const FormItem = Form.Item;
 
-const url = 'http://localhost:3000/signup'
+const url = 'http://localhost:3000/comida'
 //const url = 'https://integration1.herokuapp.com/signup'
 
 const CollectionCreateForm = Form.create()(
     class extends React.Component {
         render() {
-            const { visible, onCancel, onCreate, form,onComida,onChange,comida,loading } = this.props;
+            const { visible, onCancel, onCreate, form,onComida,onChange,comida,loading, onChangeDate, onChangePicture } = this.props;
             const { getFieldDecorator } = form;
 
             const formItemLayout = {
@@ -67,37 +67,34 @@ const CollectionCreateForm = Form.create()(
 
 
                         <FormItem label="Horario">
-                            {getFieldDecorator('price', {
+                            {getFieldDecorator('horario', {
                                 rules: [{ required: false, message: 'Por favor ingresa tu horario de trabajo!' }],
                             })(
                                 <Input onChange={onChange} 
                                         name='horario' 
-                                        value={comida.horario} 
-                                
+                                        value={comida.horario}                                 
                                         type='text'
                                         placeholder='Ejemplo: 10:00 - 18:00' />
                             )}
                         </FormItem>
 
-                        {/* // <FormItem 
-                        //     {...formItemLayout}
-                        //     label="Fotos"
-                        //     extra="Sube varias fotos de tu platillo"
-                        // >
-                        //     {getFieldDecorator('upload', {
-                        //         valuePropName: 'fileList',
-                        //         getValueFromEvent: this.normFile,
-                        //     })(
-                        //         <Upload name="logo" action="/upload.do" listType="picture">
-                        //             <Button>
-                        //                 <Icon type="upload" /> Click to upload
-                        //             </Button>
-                        //         </Upload>
-                        //     )}
-                        // </FormItem>*/}
-
-
-
+                         <FormItem 
+                            {...formItemLayout}
+                            label="Fotos"
+                            extra="Sube varias fotos de tu platillo"
+                        >
+                            {getFieldDecorator('upload', {
+                                
+                                
+                            })(
+                                <Upload name="logo" onChange={onChangePicture} multiple={true}>
+                                    <Button >
+                                        <Icon type="upload" /> Click to upload
+                                    </Button>
+                                </Upload>
+                                
+                            )}
+                        </FormItem>
 
 
                         <FormItem className="collection-create-form_last-form-item">
@@ -116,7 +113,7 @@ const CollectionCreateForm = Form.create()(
                             label="Fecha"
                         >
                             {getFieldDecorator('date-picker', config)(
-                                <DatePicker />
+                                <DatePicker  onChange={onChangeDate} />
                             )}
                         </FormItem>
                     </Form>
@@ -141,16 +138,28 @@ class CollectionsPage extends React.Component {
         comida[field] = value
         this.setState({comida})
     }
+    onChangeDate = (e, v) =>{
+        console.log(e, v)
+      
+        const field = 'date'
+        const value = v
+        const {comida} = this.state
+        comida[field] = value
+        this.setState({comida})
+    }
+
 
     createComida = (e) => {
         e.preventDefault()
-        console.log('dentro de on comida')
         const {comida} = this.state
         console.log(comida)
-        axios.post(url,comida)
+        axios.post(url,comida,{headers:{
+            "Authorization" : localStorage.getItem('token') 
+        }})
         .then(comida =>{
             console.log(comida)
             toastr.success('Creado')
+            this.setState({ visible: false });
         }).catch(e=>{
             toastr.error('Intenta de nuevo')
         })
@@ -181,6 +190,21 @@ class CollectionsPage extends React.Component {
         this.formRef = formRef;
     }
 
+    onChangePicture=(e)=>{
+        console.log(e)
+        const field = 'images'
+        const value = []
+        e.fileList.map(p=>{
+            console.log(p)
+            return p.originalFileObj
+        })
+        const {comida} = this.state
+        comida[field] = value
+        this.setState({comida})
+        console(comida)
+
+    }
+
     render() {
         const {comida,loading} = this.state
         return (
@@ -194,6 +218,8 @@ class CollectionsPage extends React.Component {
                     onChange= {this.onChange}
                     onComida={this.createComida}
                     comida={comida}
+                    onChangeDate={this.onChangeDate}
+                    onChangePicture={this.onChangePicture}
                
                 />
             </div>
