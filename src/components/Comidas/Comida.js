@@ -37,42 +37,42 @@ const CollectionCreateForm = Form.create()(
                     onCancel={onCancel}
                     onOk={onComida}
                 >
-                    <Form layout="vertical">
+                    <Form layout="vertical" value={comida.titulo}  >
                         <FormItem label="Titulo">
                             {getFieldDecorator('title', {
                                 rules: [{ required: true, message: 'Por favor ingresa el titulo de tu comida!' }],
                             })(
                                 <Input onChange={onChange} 
                                        name='title' 
-                                       value={comida.titulo} 
+                                       
                                        type='text' />
                             )}
                         </FormItem>
-                        <FormItem label="Precio">
+                        <FormItem label="Precio" value={comida.price} >
                             {getFieldDecorator('price', {
                                 rules: [{ required: true, message: 'Por favor ingresa el precio de tu comida!' }],
                             })(
                                 <Input onChange={onChange} 
                                         name='price' 
-                                        value={comida.price} 
+                                        
                                         type='text' />
                             )}
-                        </FormItem>
-                        <FormItem label="Descripcion">
+                        </FormItem   >
+                        <FormItem value={comida.description} label="Descripcion">
                             {getFieldDecorator('description')(<Input onChange={onChange} 
                                                                     name='description' 
-                                                                    value={comida.description} 
+                                                                    
                                                                     type="textarea" />)}
                         </FormItem>
 
 
-                        <FormItem label="Horario">
+                        <FormItem label="Horario" value={comida.horario}   >
                             {getFieldDecorator('horario', {
                                 rules: [{ required: false, message: 'Por favor ingresa tu horario de trabajo!' }],
                             })(
                                 <Input onChange={onChange} 
                                         name='horario' 
-                                        value={comida.horario}                                 
+                                                                       
                                         type='text'
                                         placeholder='Ejemplo: 10:00 - 18:00' />
                             )}
@@ -191,17 +191,23 @@ class CollectionsPage extends React.Component {
     }
 
     onChangePicture=(e)=>{
-        console.log(e)
+        console.log('este ese',e)
         const field = 'images'
         const value = []
-        e.fileList.map(p=>{
-            console.log(p)
-            return p.originalFileObj
-        })
+        var y =e.fileList.map(p=>{
+            console.log('estees p',p)
+            console.log('este es origin',p.originFileObj)          
+            
+            return  p.originFileObj
+        })   
+         
+        console.log('y',y) 
+        
         const {comida} = this.state
-        comida[field] = value
+        comida[field] = y
         this.setState({comida})
-        console(comida)
+        console.log('comida',   comida)
+       
 
     }
 

@@ -30,7 +30,7 @@ class NormalLoginForm  extends Component{
             localStorage.setItem('token', res.data.token)
             this.setState({loading:false})
             const bonito = this.props.history
-            bonito.push('/profile')
+            bonito.push('/detail')
 
         })
         .catch(e=>{

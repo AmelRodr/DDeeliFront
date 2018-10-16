@@ -7,6 +7,9 @@ import Gallery from './Gallery';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 import ProfileDisplay from './ProfileDisplay';
 import Comida from '../Comidas/Comida';
+import Nab from '../home/Nab'
+import Foter from '../home/Foter'
+import Menu1 from '../cards/Menu'
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -78,10 +81,12 @@ class Profile extends Component{
             contenedor =  <Content style={{ padding: '0 24px', minHeight: 280 }}>Sin compras</Content>
         }else if(current==4){
            
-            contenedor =  <Content style={{ padding: '0 24px', minHeight: 280 }}> <Comida/> </Content>
+            contenedor =  <Content style={{ padding: '0 24px', minHeight: 280 }}> <Comida/> <Menu1/> </Content>
         }
         return(
             <Layout>
+                
+                <Nab/>
 
                 <Content style={{ padding: '0 50px' }}>
                     <Layout style={{ padding: '24px 0', background: '#fff' }}>
@@ -106,7 +111,7 @@ class Profile extends Component{
                     </Layout>
                 </Content>
 
-
+                <Foter/>
                 {/* * <img style={{ borderRadius: '50%' }} src={user.photoURL || logo} width="200" alt="user" />
                 <h1>{user.username}</h1>
                 <p>{user.email}</p>*
