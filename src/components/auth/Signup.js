@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import  { Input, Button } from 'antd'
+import  { Input, Button, Layout} from 'antd'
 import toastr from 'toastr'
 import axios from 'axios'
-import { Layout } from 'antd';
 import Nab from '../home/Nab';
 import Foter from '../home/Foter';
 const { Content } = Layout;

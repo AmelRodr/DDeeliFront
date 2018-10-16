@@ -8,10 +8,12 @@ import Home from './components/home/Home';
 import Menu from './components/cards/Menu';
 import Nab from './components/home/Nab';
 import MenuDetail from './components/cards/MenuDetail';
+import Comida from './components/Comidas/Comida';
 
 const Routes = () => {
     return(
         <Switch>
+            <Route path='/comida' component={Comida}/>
             
             <Route path='/ourmenu' component={Menu}/>
             <Route path="/signup" component={Signup} />

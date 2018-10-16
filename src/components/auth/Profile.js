@@ -6,6 +6,7 @@ import {uploadPic, getUserPics} from '../../services/userService'
 import Gallery from './Gallery';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 import ProfileDisplay from './ProfileDisplay';
+import Comida from '../Comidas/Comida';
 
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -77,7 +78,7 @@ class Profile extends Component{
             contenedor =  <Content style={{ padding: '0 24px', minHeight: 280 }}>Sin compras</Content>
         }else if(current==4){
             console.log('puto')
-            contenedor =  <Content style={{ padding: '0 24px', minHeight: 280 }}>No eres chef</Content>
+            contenedor =  <Content style={{ padding: '0 24px', minHeight: 280 }}> <Comida/> </Content>
         }
         return(
             <Layout>
