@@ -1,7 +1,7 @@
 import React from 'react'
 
-//const url = 'http://localhost:3000'
-const url = 'https://integration1.herokuapp.com'
+const url = 'http://localhost:3000'
+//const url = 'https://integration1.herokuapp.com'
 
 const ImageCard = ({caption, _id, link, user, likes}) => <img height="200" width="200" src={`${url}${link}`} alt={caption} />
 
