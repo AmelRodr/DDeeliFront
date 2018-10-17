@@ -6,8 +6,8 @@ import toastr from 'toastr'
 import {Button} from 'reactstrap';
 
 
-const url = 'http://localhost:3000/login'
-//const url = 'https://integration1.herokuapp.com/login'
+//const url = 'http://localhost:3000/login'
+const url = 'https://integration1.herokuapp.com/login'
 const FormItem = Form.Item;
 
 class NormalLoginForm  extends Component{
