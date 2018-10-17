@@ -9,6 +9,7 @@ import { Collapse,
     Nav,
     NavItem,
     Button } from 'reactstrap';
+import  {Link} from 'react-router-dom'
 
 class Nab extends Component {
   constructor(props) {
@@ -29,13 +30,13 @@ class Nab extends Component {
           localStorage.removeItem('token')
           localStorage.removeItem('user')
          
-      }
-      onOurMenu= ()=> {
-          this.props.history.push('/ourmenu')
-      }
-      onSignup = () =>{
-        this.props.history.push('/signup')
-    }
+       }
+    //   onOurMenu= ()=> {
+    //       this.props.history.push('/ourmenu')
+    //   }
+    //   onSignup = () =>{
+    //     this.props.history.push('/signup')
+    // }
     
     render() {
     console.log(this.props)
@@ -51,12 +52,12 @@ class Nab extends Component {
                         <Nav className="ml-auto" navbar>
                             <NavItem>
                                 <div style={{ marginRight: '50px' }}>
-                                   {!islogged? '': <Button onClick={this.onOurMenu} outline color="success">Nuestro Menu</Button> } 
+                                   {!islogged? '': <Link to='/ourmenu' ><Button  outline color="success">Nuestro Menu</Button>  </Link>}
                                 </div>
                             </NavItem>
                             <NavItem>
                                 <div style={{ marginRight: '50px' }}>
-                                   {!islogged? <Button onClick={this.onOurMenu} outline color="success">our Menu</Button>: <Button onClick={this.onOurMenu} outline color="success">Quieres ser chef?</Button> } 
+                                   {!islogged?  <Link to='/ourmenu' ><Button Linkto='/ourmenu' outline color="success">our Menu</Button> </Link> : <Button Linkto='/ourmenu' outline color="success">Quieres ser chef?</Button> } 
                                 </div>
                             </NavItem>
                             <NavItem>
@@ -66,7 +67,7 @@ class Nab extends Component {
                                 </div>
                             </NavItem>
                             <NavItem>
-                              { !islogged ? <Button onClick={this.onSignup} color="info" >Signup</Button>  : <Button href='/' onClick={this.logout} color="danger" >Logout</Button> }   
+                              { !islogged ? <Link to='/signup' ><Button color="info" >Signup</Button></Link>  : <Button href='/' onClick={this.logout} color="danger" >Logout</Button> }   
                             </NavItem>
 
                         </Nav>
