@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
-import { Card, Layout } from 'antd';
+import { Layout } from 'antd';
 import Nab from '../home/Nab';
 import Foter from '../home/Foter'
-import { getUserPlatillos, getPlatillos } from '../../services/userService'
+import { getPlatillos } from '../../services/userService'
 import toastr from 'toastr'
 import CardsUser from './CardsUser';
 
-const { Meta } = Card;
 const { Content } = Layout;
 class Menu extends Component {
   state = {
-    rut: false,
-    user: {},
     platillos: []
   }
   componentWillMount() {
@@ -32,8 +29,8 @@ class Menu extends Component {
 
   render() {
 
-    const { rut, user, platillos } = this.state
-    const { location, match } = this.props
+    const {platillos } = this.state
+    const { location } = this.props
     return (
       <div>
 
@@ -45,8 +42,8 @@ class Menu extends Component {
 
 
           </Content>
-
-          <Foter />
+          {location.pathname === '/' ? '' : <Foter />
+          }
 
         </Layout>
       </div>

@@ -1,17 +1,15 @@
 import React, { Component } from 'react'
-import logo from '../../logo.svg'
 import axios from 'axios'
 import toastr from 'toastr'
 import { uploadPic, getUserPics } from '../../services/userService'
-import Gallery from './Gallery';
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import { Layout, Menu, Icon } from 'antd';
 import ProfileDisplay from './ProfileDisplay';
 import Comida from '../Comidas/Comida';
 import Nab from '../home/Nab'
 import Foter from '../home/Foter'
 import Menu1 from '../cards/Menu'
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Content, Sider } = Layout;
 const { SubMenu } = Menu;
 
 

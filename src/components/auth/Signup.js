@@ -35,7 +35,7 @@ class Signup extends Component {
             .then(user => {
                 console.log(user)
                 toastr.success("Bienvenido")
-                this.props.history.push('/ourmenu')
+                this.props.history.push('/')
             })
             .catch(e => toastr.error("Intenta de nuevo"))
     }

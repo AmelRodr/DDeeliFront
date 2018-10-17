@@ -1,5 +1,5 @@
 import React from 'react'
-import { Drawer, List, Avatar, Divider, Col, Row } from 'antd';
+import { Divider, Col, Row } from 'antd';
 import logo from '../../logo.svg'
 import logod from '../../logo.png'
 
@@ -33,12 +33,7 @@ const DescriptionItem = ({ title, content, user }) => (
     {content}
     {user}
   </div>
-
-
 );
-
-
-
 
 class ProfileDisplay extends React.Component {
   state = {
@@ -53,12 +48,6 @@ class ProfileDisplay extends React.Component {
     apellido: 'Hernandez',
 
   };
-
-  componentWillMount() {
-    console.log(this.props)
-    const pathname = '/display'
-
-  }
 
   showDrawer = () => {
     this.setState({
@@ -76,7 +65,7 @@ class ProfileDisplay extends React.Component {
   render() {
     const { user } = this.props
 
-    const { ciudad, pais, lema, telefono, nombre, photoURL, apellido } = this.state
+    const { ciudad, pais, telefono, nombre, apellido } = this.state
 
     return (
       <div>

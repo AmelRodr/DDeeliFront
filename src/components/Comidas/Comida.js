@@ -13,7 +13,7 @@ const url = 'http://localhost:3000/comida'
 const CollectionCreateForm = Form.create()(
     class extends React.Component {
         render() {
-            const { visible, onCancel, onCreate, form,onComida,onChange,comida,loading, onChangeDate, onChangePicture } = this.props;
+            const { visible, onCancel, form, onComida, onChange, comida, onChangeDate, onChangePicture } = this.props;
             const { getFieldDecorator } = form;
 
             const formItemLayout = {
@@ -31,7 +31,7 @@ const CollectionCreateForm = Form.create()(
             };
             return (
                 <Modal
-                    
+
                     visible={visible}
                     title="Crea un nuevo Platillo"
                     okText="Crear"
@@ -43,27 +43,27 @@ const CollectionCreateForm = Form.create()(
                             {getFieldDecorator('title', {
                                 rules: [{ required: true, message: 'Por favor ingresa el titulo de tu comida!' }],
                             })(
-                                <Input onChange={onChange} 
-                                       name='title' 
-                                       
-                                       type='text' />
+                                <Input onChange={onChange}
+                                    name='title'
+
+                                    type='text' />
                             )}
                         </FormItem>
                         <FormItem label="Precio" value={comida.price} >
                             {getFieldDecorator('price', {
                                 rules: [{ required: true, message: 'Por favor ingresa el precio de tu comida!' }],
                             })(
-                                <Input onChange={onChange} 
-                                        name='price' 
-                                        
-                                        type='text' />
+                                <Input onChange={onChange}
+                                    name='price'
+
+                                    type='text' />
                             )}
                         </FormItem   >
                         <FormItem value={comida.description} label="Descripcion">
-                            {getFieldDecorator('description')(<Input onChange={onChange} 
-                                                                    name='description' 
-                                                                    
-                                                                    type="textarea" />)}
+                            {getFieldDecorator('description')(<Input onChange={onChange}
+                                name='description'
+
+                                type="textarea" />)}
                         </FormItem>
 
 
@@ -71,29 +71,29 @@ const CollectionCreateForm = Form.create()(
                             {getFieldDecorator('horario', {
                                 rules: [{ required: false, message: 'Por favor ingresa tu horario de trabajo!' }],
                             })(
-                                <Input onChange={onChange} 
-                                        name='horario' 
-                                                                       
-                                        type='text'
-                                        placeholder='Ejemplo: 10:00 - 18:00' />
-                            )}
-                        </FormItem>                                                
+                                <Input onChange={onChange}
+                                    name='horario'
 
-                         <FormItem 
+                                    type='text'
+                                    placeholder='Ejemplo: 10:00 - 18:00' />
+                            )}
+                        </FormItem>
+
+                        <FormItem
                             {...formItemLayout}
                             label="Fotos"
                             extra="Sube varias fotos de tu platillo"
                         >
                             {getFieldDecorator('upload', {
-                                
-                                
+
+
                             })(
                                 <Upload name="logo" onChange={onChangePicture} multiple={true}>
                                     <Button >
                                         <Icon type="upload" /> Click to upload
                                     </Button>
                                 </Upload>
-                                
+
                             )}
                         </FormItem>
 
@@ -108,14 +108,14 @@ const CollectionCreateForm = Form.create()(
                                 </Radio.Group>
                             )}
                         </FormItem>
-                    
+
                         <FormItem
                             {...formItemLayout}
                             label="Fecha (Selecciones solo si es tipo reservacion)"
-                            
+
                         >
                             {getFieldDecorator('date-picker', config)(
-                                <DatePicker  onChange={onChangeDate} />
+                                <DatePicker onChange={onChangeDate} />
                             )}
                         </FormItem>
                     </Form>
@@ -131,49 +131,51 @@ class CollectionsPage extends React.Component {
         comida: {},
         loading: false,
     };
-    onChange = (e) =>{
+    onChange = (e) => {
         console.log(e.target.name)
         console.log(e.target.value)
         const field = e.target.name
         const value = e.target.value
-        const {comida} = this.state
+        const { comida } = this.state
         comida[field] = value
-        this.setState({comida})
+        this.setState({ comida })
     }
-    onChangeDate = (e, v) =>{
+    onChangeDate = (e, v) => {
         console.log(e, v)
-      
+
         const field = 'date'
         const value = v
-        const {comida} = this.state
+        const { comida } = this.state
         comida[field] = value
-        this.setState({comida})
+        this.setState({ comida })
     }
 
 
     createComida = (e) => {
         e.preventDefault()
-        const {comida} = this.state
+        const { comida } = this.state
         console.log(comida)
         const data = new FormData()
-        for(let file of comida.images){
-            data.append('images',file)
+        for (let file of comida.images) {
+            data.append('images', file)
         }
         delete comida.images
-        for(let key in comida){
-            data.append(key,comida[key])
+        for (let key in comida) {
+            data.append(key, comida[key])
         }
 
-        axios.post(url,data,{headers:{
-            "Authorization" : localStorage.getItem('token') 
-        }})
-        .then(comida =>{
-            console.log(comida)
-            toastr.success('Creado')
-            this.setState({ visible: false });
-        }).catch(e=>{
-            toastr.error('Intenta de nuevo')
+        axios.post(url, data, {
+            headers: {
+                "Authorization": localStorage.getItem('token')
+            }
         })
+            .then(comida => {
+                console.log(comida)
+                toastr.success('Creado')
+                this.setState({ visible: false });
+            }).catch(e => {
+                toastr.error('Intenta de nuevo')
+            })
     }
 
     showModal = () => {
@@ -201,29 +203,19 @@ class CollectionsPage extends React.Component {
         this.formRef = formRef;
     }
 
-    onChangePicture=(e)=>{
-        console.log('este ese',e)
+    onChangePicture = (e) => {
         const field = 'images'
-        const value = []
-        var y =e.fileList.map(p=>{
-            console.log('estees p',p)
-            console.log('este es origin',p.originFileObj)          
-            
-            return  p.originFileObj
-        })   
-         
-        console.log('y',y) 
-        
-        const {comida} = this.state
+        var y = e.fileList.map(p => {
+            return p.originFileObj
+        })
+        const { comida } = this.state
         comida[field] = y
-        this.setState({comida})
-        console.log('comida',   comida)
-       
-
+        this.setState({ comida })
+        console.log('comida', comida)
     }
 
     render() {
-        const {comida,loading} = this.state
+        const { comida } = this.state
         return (
             <div>
                 <Button type="primary" onClick={this.showModal}>Nuevo Platillo</Button>
@@ -232,12 +224,12 @@ class CollectionsPage extends React.Component {
                     visible={this.state.visible}
                     onCancel={this.handleCancel}
                     onCreate={this.handleCreate}
-                    onChange= {this.onChange}
+                    onChange={this.onChange}
                     onComida={this.createComida}
                     comida={comida}
                     onChangeDate={this.onChangeDate}
                     onChangePicture={this.onChangePicture}
-               
+
                 />
             </div>
         );

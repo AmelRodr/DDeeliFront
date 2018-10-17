@@ -1,5 +1,4 @@
-    import React from 'react';
-import ReactDOM from 'react-dom'
+import React from 'react';
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 
 const FormItem = Form.Item;
@@ -54,4 +53,3 @@ const WrappedNormalLoginForm = Form.create()(NormalLoginForm);
 
 ///ReactDOM.render(<WrappedNormalLoginForm />, document.getElementById('container'));
 export default WrappedNormalLoginForm
-          

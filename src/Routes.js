@@ -9,7 +9,6 @@ import Menu from './components/cards/Menu';
 import Nab from './components/home/Nab';
 import MenuDetail from './components/cards/MenuDetail';
 import Comida from './components/Comidas/Comida';
-import ProfileDisplay from './components/auth/ProfileDisplay';
 
 const Routes = () => {
     return(

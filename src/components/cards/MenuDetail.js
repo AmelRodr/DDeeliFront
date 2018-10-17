@@ -3,10 +3,9 @@ import Nab from '../home/Nab';
 import Foter from '../home/Foter';
 import { Grid, Container, Image, Header, Button, Icon } from 'semantic-ui-react'
 import { Layout } from 'antd';
-import MenuFeed from './MenuFeed';
 import uno from '../../ddeeliGallery/1.jpg'
 import Mapa from '../map/Mapa';
-import {getUserPlatillo} from '../../services/userService'
+import { getUserPlatillo } from '../../services/userService'
 
 const { Content } = Layout;
 
@@ -14,23 +13,25 @@ const { Content } = Layout;
 class MenuDetail extends Component {
 
     state = {
-        platillo:{},
+        platillo: { pictures: [] },
         ima: uno,
         titulo: 'Huevos Rancheros',
         precio: '$ 100',
-        mapa:'http://d2yspv744gxsd1.cloudfront.net/wp-content/uploads/2016/02/11175852/mapa.pantallas-737x280.jpg'
+        mapa: 'http://d2yspv744gxsd1.cloudfront.net/wp-content/uploads/2016/02/11175852/mapa.pantallas-737x280.jpg'
     }
-    componentWillMount(){
-        const {id} = this.props.match.params
+    componentWillMount() {
+        const { id } = this.props.match.params
         console.log(this.props)
         getUserPlatillo(id)
-        .then(res => {this.setState({platillo:res})
-        } ).catch(e=>e)
+            .then(res => {
+                this.setState({ platillo: res })
+            }).catch(e => e)
     }
 
     render() {
-        const { mapa,titulo, ima, precio,platillo } = this.state
-        console.log('PLATILLO:',platillo)
+        const {platillo } = this.state
+        const pres= `$${platillo.price} `
+
         return (
             <div>
                 <Layout className="layout">
@@ -48,20 +49,18 @@ class MenuDetail extends Component {
                                         <Grid divided='vertically'>
                                             <Grid.Row columns={2}>
                                                 <Grid.Column width={8}  >
-                                                    <Image src={ima} />
+                                                    <Image src={platillo.pictures[1]} />
                                                 </Grid.Column>
                                                 <Grid.Column >
 
-                                                    <Header as='h1'>{titulo}</Header>
-                                                    <Header as='h2'>{precio} </Header>
-                                                    <br/>
-                                                    <br/>
-                                                    <br/>
-                                                    <br/>
-                                                    <br/>
-                                                    <br/>
-                                                    <br/>
-                                                    <Button  color='red' animated>
+                                                    <Header as='h1'>{platillo.title}</Header>
+                                                    <Header as='h2'>{pres} </Header>
+                                                    <br />
+
+                                                    <br />
+                                                    <br />
+                                                    <br />
+                                                    <Button color='red' animated>
                                                         <Button.Content visible>Comprar</Button.Content>
                                                         <Button.Content hidden>
                                                             <Icon name='arrow right' />
@@ -70,25 +69,29 @@ class MenuDetail extends Component {
                                                 </Grid.Column>
                                             </Grid.Row>
 
-                                            <Grid.Row columns={2}>
-                                                <Grid.Column>
-                                                    <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+                                            <Grid.Row centered columns={1}>
+                                                <Grid.Column width='10' >
+                                                <Header as='h1'>Descripción</Header>
+                                                <Header as='h4'>{platillo.description} </Header>
+                                                <Header as='h3'>Horario de atención: </Header>
+                                                <Header as='h4'>{platillo.horario} </Header>
+
+                                                    {/* <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' /> */}
                                                 </Grid.Column>
-                                                <Grid.Column>
-                                                    <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
-                                                </Grid.Column>                                              
+                                              
                                             </Grid.Row>
-                                            <Grid.Row  columns={1}>
+                                            <Grid.Row columns={1}>
                                                 <Grid.Column>
-                                                    <div style={{height:'600px'}} >
-                                                    <Mapa/>
+                                                <Header as='h1'>Ubicación</Header>
+                                                    <div style={{ height: '600px' }} >
+                                                        <Mapa />
                                                     </div>
                                                     {/* <Image src={mapa} /> */}
                                                 </Grid.Column>
-                                                                          
+
                                             </Grid.Row>
 
-                            
+
                                         </Grid>
 
 
@@ -102,12 +105,15 @@ class MenuDetail extends Component {
                         </Content>
 
                     </div>
-
+                    <br/>
+                    <br/> 
+                    <br/>
+                    <br/>
 
                     <Foter />
 
                 </Layout>
-            
+
             </div>
         )
     }

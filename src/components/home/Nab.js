@@ -34,10 +34,8 @@ class Nab extends Component {
 
     }
 
-    render() {
-        console.log(this.props)
-        const islogged = localStorage.getItem('token')
-        console.log('isloged', islogged)
+    render() {    
+        const islogged = localStorage.getItem('token')       
         return (
             <div>
                 <Navbar color="light" light expand="md">
@@ -45,10 +43,11 @@ class Nab extends Component {
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
 
+  
                         <Nav className="ml-auto" navbar>
                             <NavItem>
                                 <div style={{ marginRight: '50px' }}>
-                                    {!islogged ? '' : <Link to='/ourmenu' ><Button outline color="success">Nuestro Menu</Button>  </Link>}
+                                    {!islogged  ? '' : <Link to='/ourmenu' ><Button outline color="success">Nuestro Menu</Button>  </Link>}
                                 </div>
                             </NavItem>
                             <NavItem>
