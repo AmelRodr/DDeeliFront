@@ -6,8 +6,8 @@ import toastr from 'toastr'
 import {Button} from 'reactstrap';
 
 
-//const url = 'http://localhost:3000/login'
-const url = 'https://integration1.herokuapp.com/login'
+const url = 'http://localhost:3000/login'
+//const url = 'https://integration1.herokuapp.com/login'
 const FormItem = Form.Item;
 
 class NormalLoginForm  extends Component{
@@ -25,12 +25,12 @@ class NormalLoginForm  extends Component{
         axios.post(url, auth)
         .then(res=>{
             console.log(res)
-            toastr.success("Bienevenido")
+            //toastr.success("Bienevenido")
             localStorage.setItem('user', JSON.stringify(res.data.user))
             localStorage.setItem('token', res.data.token)
             this.setState({loading:false})
             const bonito = this.props.history
-            bonito.push('/detail')
+            bonito.push('/ourmenu')
 
         })
         .catch(e=>{

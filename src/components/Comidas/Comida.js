@@ -6,9 +6,9 @@ import axios from 'axios'
 
 const FormItem = Form.Item;
 
-//const url = 'http://localhost:3000/comida'
-//
-const url = 'https://integration1.herokuapp.com/signup'
+const url = 'http://localhost:3000/comida'
+
+// const url = 'https://integration1.herokuapp.com/signup'
 
 const CollectionCreateForm = Form.create()(
     class extends React.Component {
@@ -77,7 +77,7 @@ const CollectionCreateForm = Form.create()(
                                         type='text'
                                         placeholder='Ejemplo: 10:00 - 18:00' />
                             )}
-                        </FormItem>
+                        </FormItem>                                                
 
                          <FormItem 
                             {...formItemLayout}
@@ -102,16 +102,17 @@ const CollectionCreateForm = Form.create()(
                             {getFieldDecorator('modifier', {
                                 initialValue: 'public',
                             })(
-                                <Radio.Group>
+                                <Radio.Group name='type' onChange={onChange} >
                                     <Radio value="llevar">Para llevar</Radio>
                                     <Radio value="reservacion">Reservacion</Radio>
                                 </Radio.Group>
                             )}
                         </FormItem>
-
+                    
                         <FormItem
                             {...formItemLayout}
-                            label="Fecha"
+                            label="Fecha (Selecciones solo si es tipo reservacion)"
+                            
                         >
                             {getFieldDecorator('date-picker', config)(
                                 <DatePicker  onChange={onChangeDate} />
@@ -154,7 +155,16 @@ class CollectionsPage extends React.Component {
         e.preventDefault()
         const {comida} = this.state
         console.log(comida)
-        axios.post(url,comida,{headers:{
+        const data = new FormData()
+        for(let file of comida.images){
+            data.append('images',file)
+        }
+        delete comida.images
+        for(let key in comida){
+            data.append(key,comida[key])
+        }
+
+        axios.post(url,data,{headers:{
             "Authorization" : localStorage.getItem('token') 
         }})
         .then(comida =>{

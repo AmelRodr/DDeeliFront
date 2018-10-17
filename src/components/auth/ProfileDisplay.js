@@ -75,7 +75,7 @@ const DescriptionItem = ({ title, content,user }) => (
     return(
         <div>
         <p style={{ ...pStyle, marginBottom: 24 }}>User Profile</p>
-          <p style={pStyle}>Personal</p>
+          <p style={pStyle}>{user.username}</p>
           <img style={{ borderRadius: '50%' }} src={user.photoURL || logo} width="200" alt="user" />
                 {/* <h1>{user.username}</h1>
                 <p>{user.email}</p>

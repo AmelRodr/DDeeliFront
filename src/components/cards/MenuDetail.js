@@ -5,6 +5,8 @@ import { Grid, Container, Image, Header, Button, Icon } from 'semantic-ui-react'
 import { Layout } from 'antd';
 import MenuFeed from './MenuFeed';
 import uno from '../../ddeeliGallery/1.jpg'
+import Mapa from '../map/Mapa';
+
 
 const { Content } = Layout;
 
@@ -67,9 +69,12 @@ class MenuDetail extends Component {
                                                     <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
                                                 </Grid.Column>                                              
                                             </Grid.Row>
-                                            <Grid.Row columns={1}>
+                                            <Grid.Row  columns={1}>
                                                 <Grid.Column>
-                                                    <Image src={mapa} />
+                                                    <div style={{height:'600px'}} >
+                                                    <Mapa/>
+                                                    </div>
+                                                    {/* <Image src={mapa} /> */}
                                                 </Grid.Column>
                                                                           
                                             </Grid.Row>

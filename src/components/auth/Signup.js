@@ -7,8 +7,8 @@ import Foter from '../home/Foter';
 
 const { Content } = Layout;
 
-//const url = 'http://localhost:3000/signup'
-const url = 'https://integration1.herokuapp.com/signup'
+const url = 'http://localhost:3000/signup'
+//const url = 'https://integration1.herokuapp.com/signup'
 
 class Signup extends Component {
 
@@ -35,6 +35,7 @@ class Signup extends Component {
             .then(user => {
                 console.log(user)
                 toastr.success("Bienvenido")
+                this.props.history.push('/ourmenu')
             })
             .catch(e => toastr.error("Intenta de nuevo"))
     }

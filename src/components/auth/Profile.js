@@ -75,13 +75,13 @@ class Profile extends Component{
             contenedor =  <Content style={{ padding: '0 24px', minHeight: 280 }}> <ProfileDisplay user={user}  /> </Content>
         }else if(current==2){
            
-            contenedor =  <Content style={{ padding: '0 24px', minHeight: 280 }}>Sin mensajes</Content>
+            contenedor =  <Content style={{ padding: '0 24px', minHeight: 280 }}><Comida/> <Menu1/> </Content>
         }else if(current==3){
            
             contenedor =  <Content style={{ padding: '0 24px', minHeight: 280 }}>Sin compras</Content>
         }else if(current==4){
            
-            contenedor =  <Content style={{ padding: '0 24px', minHeight: 280 }}> <Comida/> <Menu1/> </Content>
+            contenedor =  <Content style={{ padding: '0 24px', minHeight: 280 }}>Sin mensajes </Content>
         }
         return(
             <Layout>
@@ -100,9 +100,9 @@ class Profile extends Component{
                             >
                                 <SubMenu key="sub1" title={<span><Icon type="user" />{user.username}</span>}>
                                     <Menu.Item key="1">Perfil</Menu.Item>
-                                    <Menu.Item key="2">Mensajes</Menu.Item>
+                                    <Menu.Item key="2">Productos</Menu.Item>
                                     <Menu.Item key="3">Recibos</Menu.Item>
-                                    <Menu.Item key="4">Productos</Menu.Item>
+                                    <Menu.Item key="4">Mensajes</Menu.Item>
                                 </SubMenu>        
                             </Menu>
                         </Sider>

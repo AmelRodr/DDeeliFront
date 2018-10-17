@@ -62,7 +62,7 @@ class Home extends Component {
 
             <UncontrolledCarousel items={items} />
 
-            <Menu1 />
+            <Menu1 {...this.props} />
 
           </Content>
 

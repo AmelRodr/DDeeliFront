@@ -19,14 +19,28 @@ class Nab extends Component {
           isOpen: false
         };
       }
-      toggle() {
+      toggle (){
         this.setState({
           isOpen: !this.state.isOpen
         });
       }
+
+      logout= ()=> {
+          localStorage.removeItem('token')
+          localStorage.removeItem('user')
+         
+      }
+      onOurMenu= ()=> {
+          this.props.history.push('/ourmenu')
+      }
+      onSignup = () =>{
+        this.props.history.push('/signup')
+    }
     
     render() {
     console.log(this.props)
+    const islogged = localStorage.getItem('token')
+    console.log('isloged',islogged)
         return (
             <div>
                 <Navbar color="light" light expand="md">
@@ -37,16 +51,22 @@ class Nab extends Component {
                         <Nav className="ml-auto" navbar>
                             <NavItem>
                                 <div style={{ marginRight: '50px' }}>
-                                    <Button href='ourmenu' outline color="success">our Menu</Button>{' '}
+                                   {!islogged? '': <Button onClick={this.onOurMenu} outline color="success">Nuestro Menu</Button> } 
+                                </div>
+                            </NavItem>
+                            <NavItem>
+                                <div style={{ marginRight: '50px' }}>
+                                   {!islogged? <Button onClick={this.onOurMenu} outline color="success">our Menu</Button>: <Button onClick={this.onOurMenu} outline color="success">Quieres ser chef?</Button> } 
                                 </div>
                             </NavItem>
                             <NavItem>
                                 <div style={{ marginRight: '5px' }}>
-                                    <Login {...this.props} />
+                                {!islogged ? <Login {...this.props} /> :<Button href='/profile' color="info" >Profile</Button>  }
+                                
                                 </div>
                             </NavItem>
                             <NavItem>
-                                <Button href='/signup' color="info" >Signup</Button>{' '}
+                              { !islogged ? <Button onClick={this.onSignup} color="info" >Signup</Button>  : <Button href='/' onClick={this.logout} color="danger" >Logout</Button> }   
                             </NavItem>
 
                         </Nav>
