@@ -1,8 +1,8 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import logo from '../../logo.svg'
 import axios from 'axios'
 import toastr from 'toastr'
-import {uploadPic, getUserPics} from '../../services/userService'
+import { uploadPic, getUserPics } from '../../services/userService'
 import Gallery from './Gallery';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 import ProfileDisplay from './ProfileDisplay';
@@ -15,41 +15,41 @@ const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
 
-class Profile extends Component{
+class Profile extends Component {
 
     state = {
-        user:{},
-        pics:[],
-        current:'1'
+        user: {},
+        pics: [],
+        current: '1'
     }
 
-    componentWillMount(){
+    componentWillMount() {
         const user = JSON.parse(localStorage.getItem('user'))
-        if(!user) return this.props.history.push('/login')
-        this.setState({user})
+        if (!user) return this.props.history.push('/login')
+        this.setState({ user })
         //pedimos las fotos correspondientes al usuario
         this.getPics()
     }
 
     getPics = () => {
         getUserPics()
-        .then(pics=>{
-            this.setState({pics})
-        })
-        .catch(e=>toastr.error("no pude traer tus pics"))
+            .then(pics => {
+                this.setState({ pics })
+            })
+            .catch(e => toastr.error("no pude traer tus pics"))
     }
 
 
     getPrivateInfo = () => {
         axios.get('http://localhost:3000/private', {
-            headers:{
-                "Authorization" : localStorage.getItem('token') 
+            headers: {
+                "Authorization": localStorage.getItem('token')
             }
         })
-        .then(res=>{
-            console.log(res)
-        })
-        .catch(e=>toastr.error("algo falló", e.message))
+            .then(res => {
+                console.log(res)
+            })
+            .catch(e => toastr.error("algo falló", e.message))
     }
 
     uploadPhoto = () => {
@@ -59,34 +59,34 @@ class Profile extends Component{
     onChangeFile = (e) => {
         console.log(e.target.files[0])
         uploadPic(e.target.files[0])
-        .then(pic=>console.log(pic))
-        .catch(e=>toastr.error('Error'))
+            .then(pic => console.log(pic))
+            .catch(e => toastr.error('Error'))
     }
 
-    menuItem = (e) =>{
-       this.setState({current:e.key})
-        }
+    menuItem = (e) => {
+        this.setState({ current: e.key })
+    }
 
-    render(){
-        const {current,user, pics} = this.state
+    render() {
+        const { current, user, pics } = this.state
         console.log(current)
         let contenedor;
-        if(current==1){
-            contenedor =  <Content style={{ padding: '0 24px', minHeight: 280 }}> <ProfileDisplay user={user}  /> </Content>
-        }else if(current==2){
-           
-            contenedor =  <Content style={{ padding: '0 24px', minHeight: 280 }}><Comida/> <Menu1/> </Content>
-        }else if(current==3){
-           
-            contenedor =  <Content style={{ padding: '0 24px', minHeight: 280 }}>Sin compras</Content>
-        }else if(current==4){
-           
-            contenedor =  <Content style={{ padding: '0 24px', minHeight: 280 }}>Sin mensajes </Content>
+        if (current == 1) {
+            contenedor = <Content style={{ padding: '0 24px', minHeight: 280 }}> <ProfileDisplay {...this.props} user={user} /> </Content>
+        } else if (current == 2) {
+
+            contenedor = <Content style={{ padding: '0 24px', minHeight: 280 }}><Comida {...this.props} /> <Menu1 {...this.props} /> </Content>
+        } else if (current == 3) {
+
+            contenedor = <Content style={{ padding: '0 24px', minHeight: 280 }}>Sin compras</Content>
+        } else if (current == 4) {
+
+            contenedor = <Content style={{ padding: '0 24px', minHeight: 280 }}>Sin mensajes </Content>
         }
-        return(
+        return (
             <Layout>
-                
-                <Nab/>
+
+                <Nab />
 
                 <Content style={{ padding: '0 50px' }}>
                     <Layout style={{ padding: '24px 0', background: '#fff' }}>
@@ -103,25 +103,17 @@ class Profile extends Component{
                                     <Menu.Item key="2">Productos</Menu.Item>
                                     <Menu.Item key="3">Recibos</Menu.Item>
                                     <Menu.Item key="4">Mensajes</Menu.Item>
-                                </SubMenu>        
+                                </SubMenu>
                             </Menu>
                         </Sider>
-                        
-                      {contenedor}
+
+                        {contenedor}
                     </Layout>
                 </Content>
 
-                <Foter/>
-                {/* * <img style={{ borderRadius: '50%' }} src={user.photoURL || logo} width="200" alt="user" />
-                <h1>{user.username}</h1>
-                <p>{user.email}</p>*
-                <button onClick={this.getPrivateInfo} >Bajate mi pack privado ;)</button>
-                <input accept="image/*" onChange={this.onChangeFile} ref="input" hidden type="file" />
-                <br />   
-                <img style={{ cursor: "pointer" }} width="100" onClick={this.uploadPhoto} src="https://cdn.onlinewebfonts.com/svg/img_212908.png" />
-     
-                <Gallery pics={pics} />  */}
-            </Layout> 
+                <Foter />
+
+            </Layout>
         )
     }
 }

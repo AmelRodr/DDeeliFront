@@ -29,12 +29,15 @@ class NormalLoginForm  extends Component{
             localStorage.setItem('user', JSON.stringify(res.data.user))
             localStorage.setItem('token', res.data.token)
             this.setState({loading:false})
+
+
             const bonito = this.props.history
             bonito.push('/ourmenu')
+           console.log('PROPs', this.props)
 
         })
         .catch(e=>{
-            console.log(e)
+            console.log('RRROROROROROROE',e)
             toastr.error("Usuario o contraseña incorrectas")
             this.setState({loading:false})
             

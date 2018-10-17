@@ -3,21 +3,38 @@ import axios from 'axios'
 const url = "http://localhost:3000/"
 //const url = 'https://integration1.herokuapp.com'
 
+export const getUserPlatillo =(id) =>{
+ return axios.get(url+'comida/detail/'+ id)
+ .then(res => {
+     console.log('ressUltimo',res)
+     return res.data
+ }).catch(e=>e)
+}
+
 export const getUserPlatillos = () =>{
-    const token = localStorage.getItem('token')
-   return axios.get(url + 'ourmenu/own/',{
-    headers:{
+  const token = localStorage.getItem('token')
+   return axios.get(url + 'comida/own/',{
+     headers:{
         "Authorization":token
-    }
+    }  
    }).then(res=>{
-       console.log(res)
+       console.log('REEEEESSSSS',res)
        return res.data
    })    
      .catch(e=>e)
 }
-
-
-
+export const getPlatillos = () =>{
+    //const token = localStorage.getItem('token')
+     return axios.get(url + 'comida/',{
+       headers:{
+          //"Authorization":token
+      }  
+     }).then(res=>{
+         console.log('REEEEESSSSS',res)
+         return res.data
+     })    
+       .catch(e=>e)
+  }
 
 
 
@@ -53,6 +70,7 @@ export const getUserPics = () => {
 export const getUserData = (id) => {
     return axios.get(url + 'users/' + id)
     .then(res=>{
+        console.log('data of users::::::',res)
         return res.data
     })
     .catch(e=>e)

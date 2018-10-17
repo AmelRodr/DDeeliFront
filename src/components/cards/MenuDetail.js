@@ -6,7 +6,7 @@ import { Layout } from 'antd';
 import MenuFeed from './MenuFeed';
 import uno from '../../ddeeliGallery/1.jpg'
 import Mapa from '../map/Mapa';
-
+import {getUserPlatillo} from '../../services/userService'
 
 const { Content } = Layout;
 
@@ -14,14 +14,23 @@ const { Content } = Layout;
 class MenuDetail extends Component {
 
     state = {
+        platillo:{},
         ima: uno,
         titulo: 'Huevos Rancheros',
         precio: '$ 100',
         mapa:'http://d2yspv744gxsd1.cloudfront.net/wp-content/uploads/2016/02/11175852/mapa.pantallas-737x280.jpg'
     }
+    componentWillMount(){
+        const {id} = this.props.match.params
+        console.log(this.props)
+        getUserPlatillo(id)
+        .then(res => {this.setState({platillo:res})
+        } ).catch(e=>e)
+    }
 
     render() {
-        const { mapa,titulo, ima, precio } = this.state
+        const { mapa,titulo, ima, precio,platillo } = this.state
+        console.log('PLATILLO:',platillo)
         return (
             <div>
                 <Layout className="layout">
