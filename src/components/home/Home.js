@@ -17,19 +17,19 @@ const items = [
   {
     src: cuatro,
     altText: '',
-    caption: <div style={{ paddingBottom: '45%' }}> <Button href='/signup' color="info" >Localiza tu chef</Button> </div>,
+    caption: <div style={{ paddingBottom: '45%' }}> <Button href='/signup' color="info" >Vende tu comida a travez de nuestra app</Button> </div>,
     header: <div style={{ paddingBottom: '15%' }}> <h1>Pide tu comida a chefs independientes</h1> </div>
   },
   {
     src: dos,
     altText: 'Slide 2',
-    caption: <div style={{ paddingBottom: '45%' }}> <Button href='/signup' color="info" >Localiza tu chef</Button> </div>,
+    caption: <div style={{ paddingBottom: '45%' }}> <Button href='/signup' color="info" >Come con el chef</Button> </div>,
     header: <div style={{ paddingBottom: '15%' }}> <h1>La comida mas sabrosa</h1> </div>
   },
   {
     src: tres,
     altText: 'Slide 3',
-    caption: <div style={{ paddingBottom: '45%' }}> <Button href='/signup' color="info" >Localiza los chefs cerca de ti</Button> </div>,
+    caption: <div style={{ paddingBottom: '45%' }}> <Button href='/signup' color="info" >Comprar tu comida nunca fue tan facil</Button> </div>,
     header: <div style={{ paddingBottom: '15%' }}> <h1>Descubre a tu chef favorito</h1> </div>
   }
 ];

@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Card, Layout } from 'antd';
 import Nab from '../home/Nab';
 import Foter from '../home/Foter'
+import {getUserPlatillos} from '../../services/userService'
+import toastr from 'toastr'
+import CardsUser from './CardsUser';
 
 const { Meta } = Card;
 const { Content } = Layout;
@@ -9,7 +12,7 @@ class Menu extends Component {
   state={
     rut:false,
     user:{},
-    pics:[]
+    platillos:[]
   }
   componentWillMount(){
     /*console.log('props',this.props.history.location.pathname) 
@@ -19,19 +22,26 @@ class Menu extends Component {
     this.setState({rut:true})
     }
     console.log(this.state.rut)*/
-    // const user = JSON.parse(localStorage.getItem('user'))
-    // if(!user) return this.props.history.push('/')
-    // this.setState({user})
-    // console.log('*******user',user)
-    //pedimos las fotos correspondientes al usuario
-   // this.getPics()
+    const user = JSON.parse(localStorage.getItem('user'))
+    this.setState({user})
+    console.log('*******user',user)
+  //   //pedimos las fotos correspondientes al usuario
+  //  // this.getPics()
+   this.getPlatillos()
   }
    
+  getPlatillos = () => {
+    getUserPlatillos()
+    .then(platillos => {
+      this.setState({platillos})
+    })
+    .catch(e => toastr.error('No pude traer los platillos'))
+  }
  
 
   render() {
     
-   const {rut} = this.state
+   const {rut,user,platillos} = this.state
 
     return (
       <div>
@@ -40,7 +50,13 @@ class Menu extends Component {
         <Layout className="layout">
           <Content style={{ padding: '0 10px' }}>
 
+          <CardsUser  platillos={platillos}  />
+
             <div style={{ margin: '30px 30px 30px 30px', display: 'flex', justifyContent: 'space-around' }}>
+
+
+
+
               <Card
                 hoverable
                 style={{ width: 240 }}

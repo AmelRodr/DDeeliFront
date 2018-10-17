@@ -2,6 +2,26 @@ import axios from 'axios'
 
 const url = "http://localhost:3000/"
 //const url = 'https://integration1.herokuapp.com'
+
+export const getUserPlatillos = () =>{
+    const token = localStorage.getItem('token')
+   return axios.get(url + 'ourmenu/own/',{
+    headers:{
+        "Authorization":token
+    }
+   }).then(res=>{
+       console.log(res)
+       return res.data
+   })    
+     .catch(e=>e)
+}
+
+
+
+
+
+
+
 export const toggleFollow = (id) => {
     const token = localStorage.getItem('token')
     return axios.put(url + 'users/follow/' + id + '/', {}, {
