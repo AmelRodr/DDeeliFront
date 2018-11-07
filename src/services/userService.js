@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-const url = "http://localhost:3000/"
-//const url = 'https://integration1.herokuapp.com'
+//const url = "http://localhost:3000/"
+const url = 'https://integration1.herokuapp.com/'
 
 export const getUserPlatillo =(id) =>{
  return axios.get(url+'comida/detail/'+ id)

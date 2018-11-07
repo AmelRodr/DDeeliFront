@@ -6,9 +6,9 @@ import axios from 'axios'
 
 const FormItem = Form.Item;
 
-const url = 'http://localhost:3000/comida'
+//const url = 'http://localhost:3000/comida'
 
-// const url = 'https://integration1.herokuapp.com/signup'
+const url = 'https://integration1.herokuapp.com/comida'
 
 const CollectionCreateForm = Form.create()(
     class extends React.Component {

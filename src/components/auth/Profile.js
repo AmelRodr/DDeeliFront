@@ -73,7 +73,7 @@ class Profile extends Component {
             contenedor = <Content style={{ padding: '0 24px', minHeight: 280 }}> <ProfileDisplay {...this.props} user={user} /> </Content>
         } else if (current == 2) {
 
-            contenedor = <Content style={{ padding: '0 24px', minHeight: 280 }}><Comida {...this.props} /> <Menu1 {...this.props} /> </Content>
+            contenedor = <Content style={{ padding: '0 24px', minHeight: 280 }}><Menu1 {...this.props} /> <Comida {...this.props} /> </Content>
         } else if (current == 3) {
 
             contenedor = <Content style={{ padding: '0 24px', minHeight: 280 }}>Sin compras</Content>
